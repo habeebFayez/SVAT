@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>REGISTER</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+<!--<nav>-->
+<!--<div style="width: 100%; height: 100%; position: relative">-->
+<!--    <div style="width: 100%; height: 85px; left: 0px; top: 0px; position: absolute; background: white"></div>-->
+<!--    <div style="width: 567.50px; height: 85.50px; right: 0px ; top: 0px; position: absolute; background: #10124C"></div>-->
+<!--    <div style="width: 227px; height: 68px; left: 1078px; top: 15px; position: absolute">-->
+<!--        <img style="width: 67px; height: 68px; left: 0px; top: 0px; position: absolute; border-radius: 9999px" src="https://s3-alpha-sig.figma.com/img/c05e/f57a/0cd4379e9299836f4bbb41eff43e28e3?Expires=1704672000&Signature=LJ56FCxk3Z-P3m1sc4gUYGMvEU5XNVnQn7XGCssqv90FgOmfIfDGe6E~wxX1jRchRzRB-OnYb70f97U9kKAhp3MZd5Y7baozlgG6EMTUOw0ASvY4N722qIn72~lyGA9xsgIOjh~dDveNQYja~nnANKjdh6x8~sn9CSePQvG-mMGjlPoUY5ddd3UB92hI~F~4BFoQdJGPHRTqqvSmnGXoyOEk056ErsIe2QgRbpiuVhCeYffSV3qK8mnud~7t-4Rr~DJJEvhRc4YdD-At0qr0wtVG0bNnwsVstVFtecBMkbG~hzfkvLrwMGJihTTFCrfdvZcszU6LiOh4wRGj9pEBmQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" />-->
+<!--        <div style="width: 149px; height: 24px; left: 78px; top: 27px; position: absolute; color: white; font-size: 20px; font-family: Inter; font-weight: 700; word-wrap: break-word">HABEEB FAYEZ</div>-->
+<!--        <div style="width: 120px; height: 21px; left: 79px; top: 4px; position: absolute; color: #696969; font-size: 17px; font-family: Inter; font-weight: 700; word-wrap: break-word">-->
+<!--            <a href="#" style="position: absolute; color: #696969; font-size: 17px; font-family: Inter; font-weight: 700; word-wrap: break-word">EDIT PROFILE </a></div>-->
+<!--    </div>-->
+<!--    <div style="width: 727px; height: 68.79px; left: 0px; top: 12.04px; position: absolute; justify-content: flex-start; align-items: flex-start; gap: 25px; display: inline-flex">-->
+<!--        <img style="width: 130px; height: 70px ; top: 10px" src="https://s3-alpha-sig.figma.com/img/96f4/b57f/e466c91fbee5a1dbb571d0413b863d68?Expires=1704672000&Signature=m-kXbLgd1POEgPfISUUq&#45;&#45;sd86m39Fjf9hGvqsJys6vqqm6EqtXK7XM47aWRIqRz4n0CsX25YE8Nrkd3x~4H8wtWvuGuIZGYsCEUCdOLrmHlRb9IF2zub0pNwGnljD1LxrNIoYKv~vlTLaQwYM6st3FEoahw8RrAROs3kETtxt1~tcnuxhi-peir~2sOXhldoUTz9MvL2uhK12NuzXP0BtlQhvXnd9v7i5tHJwlCy3VVL1YwzDCHIDVe1c~9gvwk2pjlkp0MJWTetKx8uB313WhSssIe5S9reVohQGN-o41veCF6hkCneYW94VAafhdlP~2S9UXA8wSeG-K0hPkBYg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" />-->
+<!--        <div style="color: #000050; font-size: 20px; padding-top: 15px">Today Plan</div>-->
+<!--        <div style="color: #000050; font-size: 20px; padding-top: 15px ">Students List’s</div>-->
+<!--        <div style="color: #000050; font-size: 20px; padding-top: 15px">Today Data </div>-->
+<!--        <div style="color: #000050; font-size: 20px; padding-top: 15px">Calendar</div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</nav>-->
+<section class="vh-100 bg-image" style="
+ background-image: url(https://www.codingnepalweb.com/demos/website-login-registration-form-html-css/bg.jpg)">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 10px; backdrop-filter: blur(7.5px);
+                         background: rgba(255,255,255,0.40) ">
+                        <div class="card-body p-5">
+                            <h2 class="text-uppercase text-center mb-5" style="  color: #ffffff;">Create an account</h2>
+
+                            <form th:action="@{/process_register}" method="post" th:object="${user}">
+
+                                <div class="form-group">
+                                    <input  style=" border-radius: 30px ; height: 50px" placeholder="First Name" type="text" id="firstName"
+                                           class="form-control" th:field="*{firstName}" required
+                                           minlength="2" maxlength="50"/>
+                                </div>
+                                <div class="form-group">
+                                    <input style=" border-radius: 30px ; height: 50px" placeholder="Last Name" type="text" id="lastName"
+                                           class="form-control" th:field="*{lastName}" required
+                                           minlength="2" maxlength="50"/>
+                                </div>
+                                <div class="form-group">
+                                    <div th:if="${emailError}" class="text-danger" th:text="${emailError}"></div>
+                                    <input  style=" border-radius: 30px ; height: 50px" placeholder="Email" th:field="*{email}" type="email" id="userEmail"
+                                           class="form-control" required />
+                                </div>
+                                <div class="form-group">
+                                    <input style=" border-radius: 30px ; height: 50px" placeholder="Write your password" type="password" id="userPassword"
+                                           class="form-control" th:field="*{password}" required
+                                           minlength="8" maxlength="50"/>
+                                </div>
+
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" style="background-color: #00074f ; border-radius: 50px"
+                                            class="btn btn-block btn-lg gradient-custom-4 text-body">
+                                        <h4 style="  color: #ffffff;"> Register </h4>
+                                    </button>
+
+                                </div>
+                                <p class="text-center text-muted mt-5 mb-0">
+                                    <u  style="color: #ffffff">Have already an account?</u> <a th:href="@{/login}" class="fw-bold text-body" ><u
+                                        style="color: #000b8a ; font-size: 18px; font-family:Inconsolata  ">Login here</u></a>
+                                </p>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+
+</html>
