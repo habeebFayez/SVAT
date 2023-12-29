@@ -1,47 +1,59 @@
-
 <!DOCTYPE html>
-<!-- Coding By CodingNepal - codingnepalweb.com -->
-<html lang="en" >
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <meta charset="UTF-8">
-    <title>HOME</title>
+<title>HOME</title>
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title> Login & Registration </title>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
 
     <style>
-        /* Import Google font - Poppins */
+        body {
+            background-image: url("https://www.codingnepalweb.com/demos/website-login-registration-form-html-css/bg.jpg");
+            backdrop-filter: blur(50px);
+            background-size: 100%;
+            height: 100vh;
+
+
+        }
+
         * {
-            margin: 0;
+            margin: 0px;
             padding: 0;
             box-sizing: border-box;
             font-family: "Poppins", sans-serif;
+
         }
+
         a {
             text-decoration: none;
         }
+
         .header {
-            position: fixed;
             height: 80px;
             width: 100%;
             z-index: 100;
             display: flex;
-            box-shadow:  -12px -12px 42px #ffffff,
-                -20px -20px 42px #ffffff;
+            box-shadow: -12px -12px 42px #ffffff,
+            -20px -20px 42px #ffffff;
             align-items: center;
             justify-content: space-between;
             backdrop-filter: blur(7.5px);
-            background: rgba(255,255,255,0.50);
+            background: rgba(255, 255, 255, 0.50);
             padding: 0 20px;
         }
+
         .nav {
             /*max-width: 1100px;*/
+
             width: 100%;
             margin: 0 auto;
         }
+
         .nav,
         .nav_item {
             display: flex;
@@ -49,23 +61,28 @@
             align-items: center;
             justify-content: space-between;
         }
+
         .nav_logo,
         .nav_link,
         .button {
             color: #fff;
         }
+
         .nav_logo {
             font-size: 50px;
         }
+
         .nav_item {
             column-gap: 25px;
             padding-top: 20px;
             justify-content: space-between;
 
         }
+
         .nav_link:hover {
             color: #d9d9d9;
         }
+
         .button {
             padding: 6px 12px;
 
@@ -75,21 +92,24 @@
             border-radius: 6px;
             cursor: pointer;
         }
+
         .button:active {
             transform: scale(0.98);
         }
 
         /* Home */
         .home {
-            position: relative;
+
             height: 100vh;
             width: 100%;
-            background-image:url("https://www.codingnepalweb.com/demos/website-login-registration-form-html-css/bg.jpg");
-         /*filter: blur(50px);*/
-            /*background-color: #c4c4c4;*/
+            /*filter: blur(50px);*/
+            background-color: rgba(196, 196, 196, 0.41);
             background-size: cover;
-            background-position: center;
+            /*background-position: center;*/
+
+            z-index: 9991;
         }
+
         .home::before {
             content: "";
             position: absolute;
@@ -101,14 +121,16 @@
             pointer-events: none;
             transition: all 0.5s ease-out;
         }
+
         .home.show::before {
             opacity: 1;
             pointer-events: auto;
         }
+
         /* From */
         .form_container {
             position: fixed;
-            max-width: 320px;
+            max-width: 600px;
             width: 100%;
             top: 50%;
             left: 50%;
@@ -122,20 +144,25 @@
             pointer-events: none;
             transition: all 0.4s ease-out;
         }
+
         .home.show .form_container {
             opacity: 1;
             pointer-events: auto;
             transform: translate(-50%, -50%) scale(1);
         }
+
         .signup_form {
             display: none;
         }
+
         .form_container.active .signup_form {
             display: block;
         }
+
         .form_container.active .login_form {
             display: none;
         }
+
         .form_close {
             position: absolute;
             top: 10px;
@@ -145,17 +172,20 @@
             opacity: 0.7;
             cursor: pointer;
         }
+
         .form_container h2 {
             font-size: 22px;
             color: #0b0217;
             text-align: center;
         }
+
         .input_box {
             position: relative;
             margin-top: 30px;
             width: 100%;
             height: 40px;
         }
+
         .input_box input {
             height: 100%;
             width: 100%;
@@ -166,9 +196,11 @@
             transition: all 0.2s ease;
             border-bottom: 1.5px solid #aaaaaa;
         }
+
         .input_box input:focus {
             border-color: #7d2ae8;
         }
+
         .input_box i {
             position: absolute;
             top: 50%;
@@ -176,46 +208,56 @@
             font-size: 20px;
             color: #707070;
         }
+
         .input_box i.email,
         .input_box i.password {
             left: 0;
         }
+
         .input_box input:focus ~ i.email,
         .input_box input:focus ~ i.password {
             color: #7d2ae8;
         }
+
         .input_box i.pw_hide {
             right: 0;
             font-size: 18px;
             cursor: pointer;
         }
+
         .option_field {
             margin-top: 14px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
+
         .form_container a {
             color: #7d2ae8;
             font-size: 12px;
         }
+
         .form_container a:hover {
             text-decoration: underline;
         }
+
         .checkbox {
             display: flex;
             column-gap: 8px;
             white-space: nowrap;
         }
+
         .checkbox input {
             accent-color: #7d2ae8;
         }
+
         .checkbox label {
             font-size: 12px;
             cursor: pointer;
             user-select: none;
             color: #0b0217;
         }
+
         .form_container .button {
             background: #7d2ae8;
             margin-top: 30px;
@@ -223,12 +265,14 @@
             padding: 10px 0;
             border-radius: 10px;
         }
+
         .login_signup {
             font-size: 12px;
             text-align: center;
             margin-top: 15px;
 
         }
+
         .message-container {
             position: fixed;
             top: 90%;
@@ -255,70 +299,363 @@
             background-color: #fff3cd; /* Bootstrap's warning background color */
             color: #856404; /* Bootstrap's warning text color */
         }
+
+        h1 {
+            font-size: 25px;
+            color: #ffffff;
+            text-transform: uppercase;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        table {
+            width: 100%;
+            table-layout: fixed;
+            background: rgba(253, 253, 253, 0.73);
+        }
+
+        .tbl-header {
+            background-color: rgba(255, 255, 255, 0.27);
+        }
+
+        .tbl-content {
+            height: 350px;
+            overflow-x: auto;
+            margin-top: 0px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        th {
+            padding: 20px 15px;
+            text-align: left;
+            font-weight: 800;
+            font-size: 15px;
+            background-color: rgba(255, 255, 255, 0.57);
+            color: #00074f;
+            text-transform: uppercase;
+        }
+
+        td {
+            padding: 15px;
+            text-align: left;
+            vertical-align: middle;
+            font-weight: 400;
+            font-size: 12px;
+            color: #1a1a1a;
+            border-bottom: solid 1px rgba(255, 255, 255, 0.3);
+        }
+        section {
+            margin: 50px;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        }
+        ::-webkit-scrollbar-thumb {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        }
     </style>
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+    <link href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" rel="stylesheet"/>
 </head>
 <body>
+<div class="page">
+    <header class="header">
 
-<header class="header">
     <nav class="nav">
-        <a href="#" class="nav_logo ">
-            <img src="https://s3-alpha-sig.figma.com/img/96f4/b57f/e466c91fbee5a1dbb571d0413b863d68?Expires=1704672000&Signature=m-kXbLgd1POEgPfISUUq--sd86m39Fjf9hGvqsJys6vqqm6EqtXK7XM47aWRIqRz4n0CsX25YE8Nrkd3x~4H8wtWvuGuIZGYsCEUCdOLrmHlRb9IF2zub0pNwGnljD1LxrNIoYKv~vlTLaQwYM6st3FEoahw8RrAROs3kETtxt1~tcnuxhi-peir~2sOXhldoUTz9MvL2uhK12NuzXP0BtlQhvXnd9v7i5tHJwlCy3VVL1YwzDCHIDVe1c~9gvwk2pjlkp0MJWTetKx8uB313WhSssIe5S9reVohQGN-o41veCF6hkCneYW94VAafhdlP~2S9UXA8wSeG-K0hPkBYg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
-                 alt="Logo Image"
+        <a class="nav_logo " href="#">
+            <img alt="Logo Image"
+                 src="https://s3-alpha-sig.figma.com/img/96f4/b57f/e466c91fbee5a1dbb571d0413b863d68?Expires=1704672000&Signature=m-kXbLgd1POEgPfISUUq--sd86m39Fjf9hGvqsJys6vqqm6EqtXK7XM47aWRIqRz4n0CsX25YE8Nrkd3x~4H8wtWvuGuIZGYsCEUCdOLrmHlRb9IF2zub0pNwGnljD1LxrNIoYKv~vlTLaQwYM6st3FEoahw8RrAROs3kETtxt1~tcnuxhi-peir~2sOXhldoUTz9MvL2uhK12NuzXP0BtlQhvXnd9v7i5tHJwlCy3VVL1YwzDCHIDVe1c~9gvwk2pjlkp0MJWTetKx8uB313WhSssIe5S9reVohQGN-o41veCF6hkCneYW94VAafhdlP~2S9UXA8wSeG-K0hPkBYg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
                  style="width: 100px; height: auto">
         </a>
 
         <ul class="nav_items">
             <li class="nav_item">
-                <a style=" color: #00074f; font-size: 17px; font-family: Inter; font-weight: 700; word-wrap: break-word" href="#" class="nav_link">Home</a>
-                <a  style=" color: #00074f; font-size: 17px; font-family: Inter; font-weight: 700; word-wrap: break-word"href="#" class="nav_link">Product</a>
-                <a  style=" color: #00074f; font-size: 17px; font-family: Inter; font-weight: 700; word-wrap: break-word"href="#" class="nav_link">Services</a>
-                <a  style=" color: #00074f; font-size: 17px; font-family: Inter; font-weight: 700;" href="#" class="nav_link">Contact</a>
+                <a class="nav_link"
+                   href="#" style=" color: #00074f; font-size: 17px; font-family: Inter; font-weight: 700; word-wrap: break-word">Home</a>
+                <a class="nav_link"
+                   href="#" style=" color: #00074f; font-size: 17px; font-family: Inter; font-weight: 700; word-wrap: break-word">Product</a>
+                <a class="nav_link"
+                   href="#" style=" color: #00074f; font-size: 17px; font-family: Inter; font-weight: 700; word-wrap: break-word">Services</a>
+                <a class="nav_link" href="#"
+                   style=" color: #00074f; font-size: 17px; font-family: Inter; font-weight: 700;">Contact</a>
+
             </li>
         </ul>
-        <div  style="padding-right: 0px ; right: 0px">
-<!--            <button class="button" id="signup" href="/logout"-->
-<!--                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"-->
-<!--                    style=" border-color:#00074f ;background-color: #00074f ; width: 100px ; border-radius: 20px ; left: 5px" >LogOut</button>-->
-            <button style=" border-color:#6169b0 ;background-color: #00074f ; width: 45px ; border-radius: 20px ; left: 5px"
-                    class="button" id="signup" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                <i class="fas fa-sign-out-alt" style="color: #ffffff; font-size: 18px; margin-right: 5px;"></i>
+        <div style="padding-right: 0px ; right: 0px">
 
-            </button>
+            <!-- ################################### MUST BE THE USER  INFO /*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/ -->
+            <div onclick="toggleSmallDiv()" style=" right: 320px ; top: 10px; position: absolute">
+                <img src="https://s3-alpha-sig.figma.com/img/c05e/f57a/0cd4379e9299836f4bbb41eff43e28e3?Expires=1704672000&Signature=LJ56FCxk3Z-P3m1sc4gUYGMvEU5XNVnQn7XGCssqv90FgOmfIfDGe6E~wxX1jRchRzRB-OnYb70f97U9kKAhp3MZd5Y7baozlgG6EMTUOw0ASvY4N722qIn72~lyGA9xsgIOjh~dDveNQYja~nnANKjdh6x8~sn9CSePQvG-mMGjlPoUY5ddd3UB92hI~F~4BFoQdJGPHRTqqvSmnGXoyOEk056ErsIe2QgRbpiuVhCeYffSV3qK8mnud~7t-4Rr~DJJEvhRc4YdD-At0qr0wtVG0bNnwsVstVFtecBMkbG~hzfkvLrwMGJihTTFCrfdvZcszU6LiOh4wRGj9pEBmQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                     style="width: 57px; height: 58px; left: 0px; top: 0px; position: absolute; border-radius: 9999px"/>
+                <div style="width: 149px; height: 24px; left: 78px; top: 27px; position: absolute; color: white; font-size: 20px; font-family: Inter; font-weight: 700; word-wrap: break-word">
 
-            <div style=" right: 320px ; top: 10px; position: absolute">
-                    <img style="width: 57px; height: 58px; left: 0px; top: 0px; position: absolute; border-radius: 9999px" src="https://s3-alpha-sig.figma.com/img/c05e/f57a/0cd4379e9299836f4bbb41eff43e28e3?Expires=1704672000&Signature=LJ56FCxk3Z-P3m1sc4gUYGMvEU5XNVnQn7XGCssqv90FgOmfIfDGe6E~wxX1jRchRzRB-OnYb70f97U9kKAhp3MZd5Y7baozlgG6EMTUOw0ASvY4N722qIn72~lyGA9xsgIOjh~dDveNQYja~nnANKjdh6x8~sn9CSePQvG-mMGjlPoUY5ddd3UB92hI~F~4BFoQdJGPHRTqqvSmnGXoyOEk056ErsIe2QgRbpiuVhCeYffSV3qK8mnud~7t-4Rr~DJJEvhRc4YdD-At0qr0wtVG0bNnwsVstVFtecBMkbG~hzfkvLrwMGJihTTFCrfdvZcszU6LiOh4wRGj9pEBmQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" />
-                    <div style="width: 149px; height: 24px; left: 78px; top: 27px; position: absolute; color: white; font-size: 20px; font-family: Inter; font-weight: 700; word-wrap: break-word">HABEEB FAYEZ</div>
-                    <div style="width: 120px; height: 21px; left: 79px; top: 4px; position: absolute; color: #00074f; font-size: 17px; font-family: Inter; font-weight: 700; word-wrap: break-word">
-                        <a href="#" style="position: absolute; color: #00074f; font-size: 17px; font-family: Inter; font-weight: 700; word-wrap: break-word">EDIT PROFILE </a></div>
+
+                    HABEEB FAYEZ
+
+
                 </div>
+                <div style="width: 120px; height: 21px; left: 79px; top: 4px; position: absolute; color: #00074f; font-size: 17px; font-family: Inter; font-weight: 700; word-wrap: break-word">
+                    <a href="#"
+                       style="position: absolute; color: #00074f; font-size: 17px; font-family: Inter; font-weight: 700; word-wrap: break-word">PROFILE </a>
+                </div>
+            </div>
         </div>
     </nav>
+    <div id="smallDiv" style=" z-index : 9999 ;display: none;  position: absolute; top: 80px; left: 72%;">
+        <div class="profile" style="width: 399px; height: 140px; background-color: lightblue;border-radius:
+         20px;border-top-left-radius: 0;
+             position: fixed;
 
-</header >
+            justify-content: space-between;
+            backdrop-filter: blur(7.5px);
+            background: rgba(238,238,238,0.6);
+            ">
+            <div class="C" style="width: 233px; height: 78px; left: 10px; top: 23px; position: absolute">
+                <img src="https://s3-alpha-sig.figma.com/img/c05e/f57a/0cd4379e9299836f4bbb41eff43e28e3?Expires=1704672000&Signature=LJ56FCxk3Z-P3m1sc4gUYGMvEU5XNVnQn7XGCssqv90FgOmfIfDGe6E~wxX1jRchRzRB-OnYb70f97U9kKAhp3MZd5Y7baozlgG6EMTUOw0ASvY4N722qIn72~lyGA9xsgIOjh~dDveNQYja~nnANKjdh6x8~sn9CSePQvG-mMGjlPoUY5ddd3UB92hI~F~4BFoQdJGPHRTqqvSmnGXoyOEk056ErsIe2QgRbpiuVhCeYffSV3qK8mnud~7t-4Rr~DJJEvhRc4YdD-At0qr0wtVG0bNnwsVstVFtecBMkbG~hzfkvLrwMGJihTTFCrfdvZcszU6LiOh4wRGj9pEBmQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                     style="width: 57px; height: 58px; left: 0px; top: 0px;  border-radius: 9999px"/>
+                <div class="WelcomeHabeebFayez"
+                     style="left: 60px; top: 20px; position: absolute; color: #ffffff; font-size: 15px; font-family: Inter; font-weight: 700; word-wrap: break-word">
+                    Welcome,  HABEEB FAYEZ
+                </div>
+                <div class="ChangePicture"
+                     style="left: 60px; top: -1px; position: absolute; color: #00074f; font-size: 12px; font-family: Inter; font-weight: 700; word-wrap: break-word">
+                    <a href="#" style=" color: #00074f; font-size: 13px; font-weight: 700; word-wrap: break-word">Change
+                        Picture</a></div>
+            </div>
 
-<section class="home">
-    <form id="logout-form" th:action="@{/logout}" method="post" style="display: none;">
+            <button class="button"
+                    id="edit profile" onclick="" style="  border: none; font-size: 12px ; color: #ffffff; position: absolute;left: 198px;top: 20px; ; width: 160px  ;">
+                <i aria-hidden="true" class="fa fa-user"
+                   style="color: #00074f; top: 50px; margin-right: 5px;font-size: 18px; font-weight: 700"> </i>
+                Edit Your Profile
+            </button>
+
+            <button class="button"
+                    id="problem" onclick="" style=" border: none;  font-size: 12px ; color: #ffffff; position: absolute;left: 203px;top: 49px ;background-color: rgba(120,120,124,0) ; width: 160px ; ">
+                <i class="fa fa-exclamation-triangle"
+                   style="color: #ff2525; top: 50px; margin-right: 5px;font-size: 18px; font-weight: 700"> </i>
+                Report a Problem
+            </button>
+
+            <button class="button"
+                    id="signup" onclick="event.preventDefault(); setTimeout(function() { document.getElementById('logout-form').submit(); }, 100);"
+                    style="height: fit-content; color: #ffffff; font-size: 18px; position: absolute; left: 195px; top: 90px; background-color: rgba(120, 120, 124, 0); width: 150px; border: none;">
+                <i class="fas fa-sign-out-alt" style="color: #00074f; top: 50px; margin-right: 5px; font-size: 20px; font-weight: 700"> </i>
+                Logout
+            </button>
+
+        </div>
+    </div>
+
+</header>
+
+<!--**************************************************PAGE******************************************************-->
+
+<div class="home">
+    <h1 style="padding-top: 25px">Fixed Table header</h1>
+    <div style="width: 100% ;   text-align: center; ">
+        <button class="button" style="border-color:#00ab1c ;
+        background-color: #00ab1c ; width: 200px ; border-radius: 20px ;
+        font-weight: 700 " id="form-open">ADD New Student</button>
+
+    </div>
+    <section style="margin: 20px">
+        <div class="tbl-header">
+            <table border="0" cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <th style="text-align: center;" >ID</th>
+                    <th  style="text-align: center;">Student No</th>
+                    <th  style="text-align: center;">First Name</th>
+                    <th style="text-align: center;">Last Name</th>
+                    <th style="width: 280px ;text-align: center;">Email</th>
+                    <th style="text-align: center;">Department</th>
+                    <th style="text-align: center;">Action</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="tbl-content table-hover">
+            <table border="0" cellpadding="0" cellspacing="0" >
+                <tbody>
+                <tr th:each="student, iterStat : ${studentList}">
+                    <td style="text-align: center;font-weight: 700" th:text="${iterStat.index + 1}"></td>
+                    <td style="text-align: center;font-weight: 700" th:text="${student.getStudentNumber()}"></td>
+                    <td style="text-align: center;font-weight: 700" th:text="${student.getFirstName()}"></td>
+                    <td style="text-align: center;font-weight: 700" th:text="${student.getLastName()}"></td>
+                    <td style="width: 280px; font-weight: 700; text-align: center;" th:text="${student.getEmail()}"></td>
+                    <td style="text-align: center;font-weight: 700" th:text="${student.getDepartment()}"></td>
+                    <td style="text-align: center;font-weight: 700">
+                        <button class="rowButton" style=" border-radius: 40px ;width: 80px ;font-weight: 700;
+                         background-color: #000e94 ; color: #ffffff ; border-color: #000e94">Edit</button>
+                    </td>
+
+                </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+
+
+
+    <!--*************************************************************************************************-->
+
+    <div class="form_container">
+        <i class="uil uil-times form_close" style="color: red; font-size: 35px"></i>
+        <!-- Login --------------------------------------------------------------------------------------------------- -->
+        <div class="form login_form">
+            <form method="post" th:action="@{/home/add_student}" th:object="${student}" id="studentForm">
+                <h2>Add new student</h2>
+
+                <div class="input_box" style="display: flex; justify-content: space-between;">
+                    <input type="text" th:field="*{firstName}" placeholder="First Name" required />
+                    <input type="text" th:field="*{lastName}" placeholder="Last Name" required />
+                </div>
+
+                <div class="input_box">
+                    <div th:if="${error}" class="text-danger error-message" th:text="${emailError}"></div>
+                    <input type="email" th:field="*{email}" placeholder="Student Email" required />
+                </div>
+
+                <div class="input_box">
+                    <div th:if="${studentNumberError}" class="text-danger error-message" th:text="${studentNumberError}"></div>
+                    <input type="text" th:field="*{studentNumber}" placeholder="Student Number" required />
+                </div>
+
+                <div class="input_box">
+                    <input type="text" th:field="*{department}" placeholder="Student Department" required />
+                </div>
+
+                <div class="input_box" style="margin-top: 25px; display: flex; justify-content: center; align-items: center;">
+                    <button type="submit" style="width: 150px; color: #f8f8f8; height: 40px;
+                    background-color: #00074f; border-radius: 50px; display: flex;
+                    align-items: center; justify-content: center;">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--**************************************************************************************************-->
+
+
+    </div>
+</div>
+
+
+
+    <form
+            id="logout-form" th:action="@{/logout}" method="post" style="display: none;">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
     </form>
-
-</section>
-
+</div>
 </body>
 </html>
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>HOME</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<h1>List Of Students</h1>-->
-<!--<a th:href="@{/logout}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">-->
-<!--    Logout-->
-<!--</a>-->
-<!--<form id="logout-form" th:action="@{/logout}" method="post" style="display: none;">-->
-<!--    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />-->
-<!--</form>-->
-<!--</body>-->
-<!--</html>-->
+
+<script>
+    function toggleSmallDiv() {
+        var smallDiv = document.getElementById('smallDiv');
+        smallDiv.style.display = (smallDiv.style.display === 'none') ? 'block' : 'none';
+    }
+    const formOpenBtn = document.querySelector("#form-open"),
+        form33OpenBtn = document.querySelector("#form-33open"),
+        home = document.querySelector(".home"),
+        formContainerStudent = document.querySelector(".form_container_st"),
+        formContainer = document.querySelector(".form_container"),
+        formCloseBtn = document.querySelector(".form_close"),
+        form33CloseBtn = document.querySelector(".form_close_st"),
+        loginBtn = document.querySelector("#login"),
+        addStudentBtn = document.querySelector("#add_student");
+
+    formOpenBtn.addEventListener("click", () => home.classList.add("show"));
+    formCloseBtn.addEventListener("click", () => home.classList.remove("show"));
+    form33OpenBtn.addEventListener("click", () => home.classList.add("show"));
+    form33CloseBtn.addEventListener("click", () => home.classList.remove("show"));
+
+    loginBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        formContainer.classList.remove("active");
+    });
+    addStudentBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        formContainerStudent.classList.remove("active");
+
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        var errorMessages = document.querySelectorAll('.error-message');
+
+        setTimeout(function () {
+            errorMessages.forEach(function (errorMessage) {
+                errorMessage.style.display = 'none';
+            });
+        }, 6000);
+    });
+</script>
+
+
+<!--<section class="popup">-->
+<!--    <div class="message-container">-->
+<!--        <div th:if="${error}" class="message text-danger" th:text="${error}"></div>-->
+<!--        <div th:if="${param.logout}" class="message text-warning">You have been logged out</div>-->
+<!--    </div>-->
+
+<!--    <div class="form_container">-->
+<!--        <i class="uil uil-times form_close"></i>-->
+
+<!--        <div class="card-body p-5">-->
+<!--            <h2 class="text-uppercase text-center mb-5" style="  color: #ffffff;">Create an account</h2>-->
+
+<!--            <form th:action="@{/add_student}" method="post">-->
+
+<!--                    <input  style=" border-radius: 30px ; height: 50px" placeholder="Student First Name" type="text" id="firstName"-->
+<!--                            class="form-control" th:field="*{firstName}" required-->
+<!--                            minlength="2" maxlength="50"/>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <input style=" border-radius: 30px ; height: 50px" placeholder="Student Last Name" type="text" id="lastName"-->
+<!--                           class="form-control" th:field="*{lastName}" required-->
+<!--                           minlength="2" maxlength="50"/>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <div th:if="${emailError}" class="text-danger" th:text="${emailError}"></div>-->
+<!--                    <input  style=" border-radius: 30px ; height: 50px" placeholder="Student Email" th:field="*{email}" type="email" id="userEmail"-->
+<!--                            class="form-control" required />-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <input style=" border-radius: 30px ; height: 50px" placeholder="Write student Number" type="password" id="studentNo"-->
+<!--                           class="form-control" th:field="*{studentNumber}" required-->
+<!--                           minlength="8" maxlength="50"/>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <input style=" border-radius: 30px ; height: 50px" placeholder="Write student Department" type="password" id="studentDep"-->
+<!--                           class="form-control" th:field="*{department}" required-->
+<!--                           minlength="8" maxlength="50"/>-->
+<!--                </div>-->
+
+<!--                <div class="d-flex justify-content-center">-->
+
+
+<!--                </div>-->
+<!--                <p class="text-center text-muted mt-5 mb-0">-->
+<!--                    <u  style="color: #ffffff">Have already an account?</u> <a th:href="@{/login}" class="fw-bold text-body" ><u-->
+<!--                        style="color: #000b8a ; font-size: 18px; font-family:Inconsolata  ">Login here</u></a>-->
+<!--                </p>-->
+<!--            </form>-->
+
+<!--        </div>-->
+<!--    </div>-->
+<!--    </div>-->
+
+<!--    </div>-->
+<!--</section>-->
+
+<!--TO DO-->
+<!--add stu to list-->
+<!--user info in nav and nav div to be also used in profile-->

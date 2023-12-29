@@ -1,7 +1,10 @@
 package com.svat.svatprojectfinal.controller;
 
+import com.svat.svatprojectfinal.Entity.Student;
 import com.svat.svatprojectfinal.Entity.User;
+import com.svat.svatprojectfinal.repository.StudentRepositry;
 import com.svat.svatprojectfinal.repository.UserRepositry;
+import com.svat.svatprojectfinal.services.CustomStudentDetailsService;
 import com.svat.svatprojectfinal.services.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -25,6 +28,10 @@ public class AppController {
     private UserRepositry userRepositry;
 
     @Autowired
+    private StudentRepositry studentRepositry;
+    @Autowired
+    CustomStudentDetailsService customStudentDetailsService ;
+    @Autowired
     CustomUserDetailsService customUserDetailsService;
 
     @GetMapping("/login")
@@ -37,8 +44,7 @@ public class AppController {
             }
             return "redirect:";
         }
-//        List<User> listUsers = userRepositry.findAll();
-//        model.addAttribute("listUsers", listUsers);
+
         return "home";
     }
 
@@ -71,9 +77,10 @@ public class AppController {
     }
 
     @GetMapping("/home")
-    public String listOfStudents(Model model) {
-        List<User> listUsers = userRepositry.findAll();
-        model.addAttribute("listUsers", listUsers);
+    public String listOfStudents(Model model ,@ModelAttribute("student") Student student, BindingResult result) {
+        List<Student> studentList = studentRepositry.findAll();
+        model.addAttribute("studentList", studentList);
+
         return "home";
     }
     @GetMapping("/logout")
@@ -85,4 +92,18 @@ public class AppController {
         return "redirect:index";
     }
 
+    @PostMapping("/home/add_student")
+    public String processAddStudent(Model model, @ModelAttribute("student") Student student, BindingResult result) {
+
+        if (studentRepositry.findByEmail(student.getEmail()) != null) {
+            model.addAttribute("emailError", "This Email already belongs to a student");
+            return "redirect:";
+        } else if (studentRepositry.findByStudentNumber(student.getStudentNumber()) != null) {
+            model.addAttribute("studentNumberError", "This Student number is already existing");
+            return "redirect:";
+        } else {
+            customStudentDetailsService.addStudent(student);
+            return "redirect:/home";
+        }
+    }
 }

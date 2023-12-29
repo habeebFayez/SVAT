@@ -21,8 +21,17 @@ public class Student {
     @Column(nullable = false, unique = true , length = 50)
     private String email;
 
+    private static int numberOfStudents =1;
     public String getFirstName() {
         return firstName;
+    }
+
+    public static int getNumberOfStudents() {
+        return numberOfStudents;
+    }
+
+    public static void setNumberOfStudents(int numberOfStudents) {
+        Student.numberOfStudents = numberOfStudents;
     }
 
     public void setFirstName(String firstName) {
